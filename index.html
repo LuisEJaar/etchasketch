@@ -8,24 +8,21 @@
 
 <body>
     
-    
     <div>
         <button id="clearGrid">Clear Grid</button>
     </div>
     
     <div class="gameConsole">
         
-        <div class="viewPort"></div>
+        <div id="viewPort"></div>
     
     </div>
-    
     
     <div>
         <button id="greyScale"> Grey Scale</button>
         <button id="rainbow">Rainbow</button>
     </div>
 
-    <!--Button to resize-->
 </body>
 
 <script>
@@ -34,22 +31,12 @@
     e.target.style.background = 'blue';
     });
 
-    const greyScale = document.querySelector('#greyScale');
-    greyScale.addEventListener('click', function (e) {
-    e.target.style.background = 'blue';
-    });
-
-    const rainbow = document.querySelector('#rainbow');
-    rainbow.addEventListener('click', function (e) {
-    e.target.style.background = 'blue';
-    });
-    
     function gridMaker16x16() {
         //For loop should create 16 boxes
         //for(i=1; i<4097;i++){
         for(i=1; i<257;i++){
             //boxes to be under the main box viewPort
-            const gridContainer = document.querySelector('.viewPort');
+            const gridContainer = document.querySelector('#viewPort');
             //create div
             const pixel = document.createElement('div');
             //set initial class
@@ -62,7 +49,26 @@
 
     gridMaker16x16();
 
-   
+    const greyScale = document.querySelector('#greyScale');
+    greyScale.addEventListener('click', function (e) {
+    e.target.style.background = 'blue';
+    });
+
+    const rainbow = document.querySelector('#rainbow');
+    rainbow.addEventListener('click', function (e) {
+    e.target.style.background = 'blue';
+    });
+    
+    //Change color based on mouseover
+    let viewPort = document.getElementById("viewPort");
+    viewPort.addEventListener("mouseover", function( e ) {
+    e.target.style.backgroundColor = "orange";
+
+    // reset the color after a short delay
+    setTimeout(function() {
+    e.target.style.backgroundColor = "";
+    }, 500);
+    }, false);
 
     //function to initialize by creating div items using javascript
     //give them a class that is basically white square

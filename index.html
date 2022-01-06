@@ -51,28 +51,36 @@
 
     const greyScale = document.querySelector('#greyScale');
     greyScale.addEventListener('click', function (e) {
-    e.target.style.background = 'blue';
+        let viewPort = document.getElementById("viewPort");
+        viewPort.addEventListener("mouseover", function( e ) {
+        e.target.style.backgroundColor = "grey";
+        // reset the color after a short delay
+        setTimeout(function() {
+        e.target.style.backgroundColor = "";
+        }, 500);
+        }, false);
     });
 
     const rainbow = document.querySelector('#rainbow');
-    rainbow.addEventListener('click', function (e) {
-    e.target.style.background = 'blue';
+    rainbow.addEventListener('click', function (e) { 
+        
+        let viewPort = document.getElementById("viewPort");
+        viewPort.addEventListener("mouseover", function( e ) {
+            function random(number) {
+            return Math.floor(Math.random() * (number+1));
+            }
+            const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+            e.target.style.backgroundColor = rndCol;
+            // reset the color after a short delay
+            setTimeout(function() {
+            e.target.style.backgroundColor = "";
+            }, 500);
+            }, false);
     });
-    
-    //Change color based on mouseover
-    let viewPort = document.getElementById("viewPort");
-    viewPort.addEventListener("mouseover", function( e ) {
-    e.target.style.backgroundColor = "orange";
-
-    // reset the color after a short delay
-    setTimeout(function() {
-    e.target.style.backgroundColor = "";
-    }, 500);
-    }, false);
 
     //function to initialize by creating div items using javascript
     //give them a class that is basically white square
-
+    
 </script>
 
 </html>

@@ -2,53 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sketch</title>
+  <title>Etchy-Sketchy</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    
-    <div>
-        <button id="clearGrid">Clear Grid</button>
-    </div>
-    
-    <div class="gameConsole">
+    <div class="handHeld">
+        <div>
+            <button id="clearGrid">Clear Grid</button>
+        </div>
         
-        <div id="viewPort"></div>
-    
-    </div>
-    
-    <div>
-        <button id="greyScale"> Grey Scale</button>
-        <button id="rainbow">Rainbow</button>
-        <button id="eraser">Eraser</button>
+        <div class="gameConsole">
+                
+            <div id="viewPort"></div>
+        
+        </div>
+        
+        <div>
+            <button id="greyScale"> Grey Scale</button>
+            <button id="rainbow">Rainbow</button>
+            <button id="eraser">Eraser</button>
+        </div>
     </div>
 
 </body>
 
 <script>
+
+    //function to set background color to class default
     const clearGrid = document.querySelector('#clearGrid');
-    
     clearGrid.addEventListener('click', ()=> {
-        var pixels = document.getElementById('viewPort').getElementsByTagName('div');
+        var pixels = document.getElementById('viewPort').getElementsByTagName('div'); 
         for (i = 0; i < pixels.length; i++) {
             var pixel = pixels[i];
-            console.log(pixel);
             pixel.style.backgroundColor = "";
         }
     });
 
+    //function to create the grid
     function gridMaker16x16() {
-        //For loop should create 16 boxes
-        //for(i=1; i<4097;i++){
         for(i=1; i<257;i++){
-            //boxes to be under the main box viewPort
             const gridContainer = document.querySelector('#viewPort');
-            //create div
             const pixel = document.createElement('div');
-            //set initial class
             pixel.classList.add('pixel');
-            //actually add the div
             gridContainer.appendChild(pixel);
             
         };
@@ -56,19 +52,21 @@
 
     gridMaker16x16();
 
+    //function to set the mouseover as greyscale
     const greyScale = document.querySelector('#greyScale');
     greyScale.addEventListener('click', function (e) {
         let viewPort = document.getElementById("viewPort");
-        viewPort.addEventListener("mouseover", function( e ) {
+        viewPort.addEventListener("mouseover", function(e) {
         e.target.style.backgroundColor = "grey";
         });
     });
 
+    //function to set mouseover as random colors
     const rainbow = document.querySelector('#rainbow');
     rainbow.addEventListener('click', function (e) { 
         
         let viewPort = document.getElementById("viewPort");
-        viewPort.addEventListener("mouseover", function( e ) {
+        viewPort.addEventListener("mouseover", function(e) {
             function random(number) {
             return Math.floor(Math.random() * (number+1));
             }
@@ -77,18 +75,14 @@
         });
     });
 
+    //function to set mouseover to "erase" / set to class default
     const eraser = document.querySelector('#eraser');
     eraser.addEventListener('click', function (e) {       
         let viewPort = document.getElementById("viewPort");
-        viewPort.addEventListener("mouseover", function( e ) {
+        viewPort.addEventListener("mouseover", function(e) {
             e.target.style.backgroundColor = "";
         });
     });
-
-
-
-    //function to initialize by creating div items using javascript
-    //give them a class that is basically white square
     
 </script>
 

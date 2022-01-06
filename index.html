@@ -62,24 +62,24 @@
     gridMaker16x16();
 
     //function to take user input and create a grid
-    const genterButton = document.querySelector('#enter');
+    const enterButton = document.querySelector('#enter');
     
     enterButton.addEventListener('click',()=> {
-        input = document.getElementById("gridSize");
-        function gridMakerUserPrompt(input) {
+        userinput = document.getElementById("gridSize");
+        input = Number(userinput.value);
+
         if (input > 100) {
-            alert('thats too much work');
-        } else {
-            //need to delete the existing grid
-            for(i=0; i<(1+input^2);i++){
+            console.log('thats too much work');
+       } else {
+            
+            for(i=0; i<(input**2);i++){
             const gridContainer = document.querySelector('#viewPort');
             const pixel = document.createElement('div');
             pixel.classList.add('pixel');
             gridContainer.appendChild(pixel);
             };
         };
-        };
-    });
+        });
 
     //function to set the mouseover as greyscale
     const greyScale = document.querySelector('#greyScale');

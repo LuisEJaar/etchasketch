@@ -8,10 +8,9 @@ body {
     border: blue;
     border-style: solid;
     border-width: 2px;
-
 }
 
-.viewPort {
+#viewPort {
     display: flex;
     grid-template-columns: repeat(16,1fr);
     display: grid;

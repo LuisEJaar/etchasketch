@@ -8,12 +8,26 @@ body {
     border: blue;
     border-style: solid;
     border-width: 2px;
+
 }
 
 .viewPort {
-    display:flex;
+    display: flex;
     grid-template-columns: repeat(16,1fr);
     display: grid;
     border: blue;
     border-style: solid;
+    width: 800px;
+    max-width: 800px;
+    min-height: 800px;
+    max-height: 800px;
+    padding: 0;
+}
+
+.pixel {
+    background-color: black;
+    border:white;
+    border-style: solid;
+    content: "";
+    display: block;
 }

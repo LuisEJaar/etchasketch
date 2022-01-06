@@ -7,18 +7,43 @@
 </head>
 
 <body>
-    <div class="gameConsole">
-        <div class="viewPort"></div>
+    
+    
+    <div>
+        <button id="clearGrid">Clear Grid</button>
     </div>
     
-    <!--Set max dimensions for grid container-->
-    <!--Button for greyscale-->
-    <!--Button for rainbow-->
-    <!--Button to clear-->
+    <div class="gameConsole">
+        
+        <div class="viewPort"></div>
+    
+    </div>
+    
+    
+    <div>
+        <button id="greyScale"> Grey Scale</button>
+        <button id="rainbow">Rainbow</button>
+    </div>
+
     <!--Button to resize-->
 </body>
 
 <script>
+    const clearGrid = document.querySelector('#clearGrid');
+    clearGrid.addEventListener('click', function (e) {
+    e.target.style.background = 'blue';
+    });
+
+    const greyScale = document.querySelector('#greyScale');
+    greyScale.addEventListener('click', function (e) {
+    e.target.style.background = 'blue';
+    });
+
+    const rainbow = document.querySelector('#rainbow');
+    rainbow.addEventListener('click', function (e) {
+    e.target.style.background = 'blue';
+    });
+    
     function gridMaker16x16() {
         //For loop should create 16 boxes
         //for(i=1; i<4097;i++){
@@ -36,6 +61,9 @@
     };
 
     gridMaker16x16();
+
+   
+
     //function to initialize by creating div items using javascript
     //give them a class that is basically white square
 

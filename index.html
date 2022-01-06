@@ -21,6 +21,7 @@
     <div>
         <button id="greyScale"> Grey Scale</button>
         <button id="rainbow">Rainbow</button>
+        <button id="eraser">Eraser</button>
     </div>
 
 </body>
@@ -54,11 +55,7 @@
         let viewPort = document.getElementById("viewPort");
         viewPort.addEventListener("mouseover", function( e ) {
         e.target.style.backgroundColor = "grey";
-        // reset the color after a short delay
-        setTimeout(function() {
-        e.target.style.backgroundColor = "";
-        }, 500);
-        }, false);
+        });
     });
 
     const rainbow = document.querySelector('#rainbow');
@@ -71,11 +68,15 @@
             }
             const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
             e.target.style.backgroundColor = rndCol;
-            // reset the color after a short delay
-            setTimeout(function() {
+        });
+    });
+
+    const eraser = document.querySelector('#eraser');
+    eraser.addEventListener('click', function (e) {       
+        let viewPort = document.getElementById("viewPort");
+        viewPort.addEventListener("mouseover", function( e ) {
             e.target.style.backgroundColor = "";
-            }, 500);
-            }, false);
+        });
     });
 
     //function to initialize by creating div items using javascript

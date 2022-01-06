@@ -1,14 +1,33 @@
+
 body {
+    height: 100%;
     display: flex;
+    justify-content: center;
+}
+
+.handHeld {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: pink;
+    border-style: solid;
+    border-width: 2px;
+    margin-top: 5%;
+    background-color: rgb(255,5,5);
+    padding: 5px;
+}
+
+.headerSpace{
+    margin: 12px;
+    margin-bottom: 12px;
 }
 
 .gameConsole {
     display: flex;
     flex-shrink: inherit;
-    border: blue;
-    border-style: solid;
-    border-width: 2px;
 }
+
+
 
 #viewPort {
     display: flex;
@@ -16,11 +35,13 @@ body {
     display: grid;
     border: blue;
     border-style: solid;
-    width: 800px;
-    max-width: 800px;
-    min-height: 800px;
-    max-height: 800px;
+    width: 400px;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 400px;
     padding: 0;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .pixel {
@@ -29,4 +50,9 @@ body {
     border-style: solid;
     content: "";
     display: block;
+}
+
+.bottomButtons{
+    margin: 12px;
+
 }

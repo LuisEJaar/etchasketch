@@ -28,8 +28,14 @@
 
 <script>
     const clearGrid = document.querySelector('#clearGrid');
-    clearGrid.addEventListener('click', function (e) {
-    e.target.style.background = 'blue';
+    
+    clearGrid.addEventListener('click', ()=> {
+        var pixels = document.getElementById('viewPort').getElementsByTagName('div');
+        for (i = 0; i < pixels.length; i++) {
+            var pixel = pixels[i];
+            console.log(pixel);
+            pixel.style.backgroundColor = "";
+        }
     });
 
     function gridMaker16x16() {
@@ -78,6 +84,8 @@
             e.target.style.backgroundColor = "";
         });
     });
+
+
 
     //function to initialize by creating div items using javascript
     //give them a class that is basically white square

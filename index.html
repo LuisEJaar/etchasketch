@@ -21,6 +21,7 @@
 <script>
     function gridMaker16x16() {
         //For loop should create 16 boxes
+        //for(i=1; i<4097;i++){
         for(i=1; i<257;i++){
             //boxes to be under the main box viewPort
             const gridContainer = document.querySelector('.viewPort');
@@ -28,8 +29,6 @@
             const pixel = document.createElement('div');
             //set initial class
             pixel.classList.add('pixel');
-            //test
-            pixel.textContent = `${i}`;
             //actually add the div
             gridContainer.appendChild(pixel);
             

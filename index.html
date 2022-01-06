@@ -46,16 +46,12 @@
     });
 
     //function to create the grid
-    //search for value on fresh page from an input box
-    //square the value
-    //add 1 to value
     function gridMaker16x16() {
         for(i=0; i<256;i++){
             const gridContainer = document.querySelector('#viewPort');
             const pixel = document.createElement('div');
             pixel.classList.add('pixel');
             gridContainer.appendChild(pixel);
-            
         };
     };
 
@@ -71,7 +67,17 @@
         if (input > 100) {
             console.log('thats too much work');
        } else {
-            
+            //remove old grid
+            const gridContainer = document.querySelector('#viewPort'); 
+            const pixels = document.getElementById('viewPort').getElementsByTagName('div');
+            const iterations = pixels.length
+            for (i = 0; i < iterations; i++) {
+                const pixel = pixels[0];
+                pixel.style.backgroundColor = "";
+                gridContainer.removeChild(pixel);
+                console.log(pixels.length);
+            };
+            //create new grid
             for(i=0; i<(input**2);i++){
             const gridContainer = document.querySelector('#viewPort');
             const pixel = document.createElement('div');

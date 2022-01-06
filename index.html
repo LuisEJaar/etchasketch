@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sketch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="gameConsole">
+        <div class="viewPort"></div>
+    </div>
+    
+    <!--Set max dimensions for grid container-->
+    <!--Button for greyscale-->
+    <!--Button for rainbow-->
+    <!--Button to clear-->
+    <!--Button to resize-->
+</body>
+
+<script>
+    function gridMaker16x16() {
+        //For loop should create 16 boxes
+        for(i=1; i<257;i++){
+            //boxes to be under the main box viewPort
+            const gridContainer = document.querySelector('.viewPort');
+            //create div
+            const pixel = document.createElement('div');
+            //set initial class
+            pixel.classList.add('pixel');
+            //test
+            pixel.textContent = `${i}`;
+            //actually add the div
+            gridContainer.appendChild(pixel);
+            
+        };
+    };
+
+    gridMaker16x16();
+    //function to initialize by creating div items using javascript
+    //give them a class that is basically white square
+
+</script>
+
+</html>

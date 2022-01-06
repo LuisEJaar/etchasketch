@@ -1,0 +1,19 @@
+body {
+    display: flex;
+}
+
+.gameConsole {
+    display: flex;
+    flex-shrink: inherit;
+    border: blue;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.viewPort {
+    display:flex;
+    grid-template-columns: repeat(16,1fr);
+    display: grid;
+    border: blue;
+    border-style: solid;
+}

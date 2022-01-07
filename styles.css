@@ -45,18 +45,14 @@ body {
     max-height: 400px;
     padding: 0;
     margin: 8px;
-
 }
 
 .pixel {
-    background-color: whitesmoke;
-    /*border:white;*/
-    /*border-style: solid;*/
+    background-color: rgb(245, 245, 245);
     content: "";
     display: block;
 }
 
 .bottomButtons{
     margin: 12px;
-
 }

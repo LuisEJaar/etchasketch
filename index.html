@@ -120,21 +120,41 @@
         });
     });
 
+    ///*
     const darken = document.querySelector('#darken');
     darken.addEventListener('click', function (e) {
         let viewPort = document.getElementById("viewPort");
-        viewPort.addEventListener("mouseover", function(e) {
+        viewPort.addEventListener("mouseover", function (e) {
             e.target.style.backgroundColor = "blue";
             if (e.target.style.opacity < 0.2) {
                 e.target.style.opacity = "0.2";
             } else if (e.target.style.opacity >= 0.2){
                 let current = Number(e.target.style.opacity) + 0.2;
-               e.target.style.opacity = current;
-                console.log(current);
-                console.log(e.target.className);
+                e.target.style.opacity = current;
             };
         });
     });
+    //*/
+
+    /*
+    const darken = document.querySelector('#darken');
+    darken.addEventListener('click', function (e) {
+        let viewPort = document.getElementById("viewPort");
+        viewPort.addEventListener("mouseover", darkening(event));
+    });
+
+    function darkening (e) {
+        e.target.style.backgroundColor = "blue";
+        if (e.target.style.opacity < 0.2) {
+            e.target.style.opacity = "0.2";
+        } else if (e.target.style.opacity >= 0.2){
+            let current = Number(e.target.style.opacity) + 0.2;
+            e.target.style.opacity = current;
+        };
+    };
+    */
+
+
 
     //function to set mouseover to "erase" / set to class default
     const eraser = document.querySelector('#eraser');

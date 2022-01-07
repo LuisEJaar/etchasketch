@@ -13,7 +13,7 @@
         </div>
             
         <div class="userGrid">
-            <label for= "gridSize">Grid Size:</label>
+            <label for="gridSize">Grid Size:</label>
             <input type="text" id="gridSize" name="gridSize">
             <button id="enter">Enter</button>
         </div>
@@ -77,16 +77,28 @@
                 gridContainer.removeChild(pixel);
                 console.log(pixels.length);
             };
-            //create new grid
+            //create new divs for grid
             for(i=0; i<(input**2);i++){
-            const gridContainer = document.querySelector('#viewPort');
-            const pixel = document.createElement('div');
-            pixel.classList.add('pixel');
-            gridContainer.appendChild(pixel);
+                const gridContainer = document.querySelector('#viewPort');
+                const pixel = document.createElement('div');
+                pixel.classList.add('pixel');
+                gridContainer.appendChild(pixel);
             };
+            document.getElementById("viewPort").style.gridTemplateColumns = `repeat(${input},1fr)`;
         };
         });
 
+    
+    //function to set initial color as greyscale
+    function initialColor () {
+        let viewPort = document.getElementById("viewPort");
+        viewPort.addEventListener("mouseover", function(e) {
+        e.target.style.backgroundColor = "grey";
+        });
+    };
+
+    initialColor ();
+    
     //function to set the mouseover as greyscale
     const greyScale = document.querySelector('#greyScale');
     greyScale.addEventListener('click', function (e) {

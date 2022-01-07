@@ -31,8 +31,6 @@ body {
     flex-shrink: inherit;
 }
 
-
-
 #viewPort {
     display: flex;
     grid-template-columns: repeat(16,1fr);
@@ -49,9 +47,9 @@ body {
 }
 
 .pixel {
-    background-color: black;
-    border:white;
-    border-style: solid;
+    background-color: whitesmoke;
+    /*border:white;*/
+    /*border-style: solid;*/
     content: "";
     display: block;
 }

@@ -18,15 +18,14 @@
             <button id="enter">Enter</button>
         </div>
         
-        <div class="gameConsole">
-                
+        <div class="gameConsole">      
             <div id="viewPort"></div>
-        
         </div>
         
         <div class= "bottomButtons">
             <button id="greyScale"> Grey Scale</button>
             <button id="rainbow">Rainbow</button>
+            <button id="darken">Darken</button>
             <button id="eraser">Eraser</button>
         </div>
     </div>
@@ -42,6 +41,7 @@
         for (i = 0; i < pixels.length; i++) {
             var pixel = pixels[i];
             pixel.style.backgroundColor = "";
+            //pixel.style.opacity = 0;
         }
     });
 
@@ -87,7 +87,6 @@
             document.getElementById("viewPort").style.gridTemplateColumns = `repeat(${input},1fr)`;
         };
         });
-
     
     //function to set initial color as greyscale
     function initialColor () {
@@ -110,8 +109,7 @@
 
     //function to set mouseover as random colors
     const rainbow = document.querySelector('#rainbow');
-    rainbow.addEventListener('click', function (e) { 
-        
+    rainbow.addEventListener('click', function (e) {      
         let viewPort = document.getElementById("viewPort");
         viewPort.addEventListener("mouseover", function(e) {
             function random(number) {
@@ -119,6 +117,22 @@
             }
             const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
             e.target.style.backgroundColor = rndCol;
+        });
+    });
+
+    const darken = document.querySelector('#darken');
+    darken.addEventListener('click', function (e) {
+        let viewPort = document.getElementById("viewPort");
+        viewPort.addEventListener("mouseover", function(e) {
+            e.target.style.backgroundColor = "blue";
+            if (e.target.style.opacity < 0.2) {
+                e.target.style.opacity = "0.2";
+            } else if (e.target.style.opacity >= 0.2){
+                let current = Number(e.target.style.opacity) + 0.2;
+               e.target.style.opacity = current;
+                console.log(current);
+                console.log(e.target.className);
+            };
         });
     });
 

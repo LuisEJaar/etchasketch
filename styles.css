@@ -29,21 +29,23 @@ body {
 .gameConsole {
     display: flex;
     flex-shrink: inherit;
+    background-color: whitesmoke;
+    opacity: 1;
+    border: blue;
+    border-style: solid;
 }
 
 #viewPort {
     display: flex;
     grid-template-columns: repeat(16,1fr);
     display: grid;
-    border: blue;
-    border-style: solid;
     width: 400px;
     max-width: 400px;
     min-height: 400px;
     max-height: 400px;
     padding: 0;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin: 8px;
+
 }
 
 .pixel {

@@ -97,20 +97,22 @@
     };
 
     initialColor ();
-    
-    
-    //function to set the mouseover as greyscale
+
+    //setup for grey scale button function
     const greyScale = document.querySelector('#greyScale');
-    greyScale.addEventListener('click', function (e) {
+    greyScale.addEventListener('click', greying);
+
+    function greying () {
         let viewPort = document.getElementById("viewPort");
-        
-        viewPort.addEventListener("mouseover", function(e) {
-        e.target.style.backgroundColor = "grey";
-        });
-    });
+        viewPort.addEventListener("mouseover", grey);   
+    };
 
+    function grey (event) {
+        event.target.style.backgroundColor = "grey";
+        event.target.style.opacity = "";
+    };
 
-
+    //setup for rainbow button function
     const rainbow = document.querySelector('#rainbow');
     rainbow.addEventListener('click', coloring);
     
@@ -119,7 +121,7 @@
         viewPort.addEventListener("mouseover", color);
     };
     
-    function color (event){
+    function color (event) {
         function random(number) {
         return Math.floor(Math.random() * (number+1));
         };
@@ -128,15 +130,16 @@
         event.target.style.opacity = "";
     };
 
+    //setup for darken button function
     const darken = document.querySelector('#darken');
     darken.addEventListener('click', darkening);
 
     function darkening () {
         let viewPort = document.getElementById("viewPort");
-        viewPort.addEventListener("mouseover", darker);    
+        viewPort.addEventListener("mouseover", dark);    
         };
     
-    function darker (event) {    
+    function dark (event) {    
             event.target.style.backgroundColor = "blue";
         if (event.target.style.opacity < 0.2) {
             event.target.style.opacity = "0.2";
@@ -146,16 +149,18 @@
         };
     };
 
+    //remove interfering event listeners
     rainbow.addEventListener('click', ()=> {
-        viewPort.removeEventListener("mouseover", darker);   
+        viewPort.removeEventListener("mouseover", dark);   
     });
 
     greyScale.addEventListener('click', ()=> {
-        viewPort.removeEventListener("mouseover", darker);   
+        viewPort.removeEventListener("mouseover", dark);   
     });
 
     darken.addEventListener('click', ()=> {
         viewPort.removeEventListener("mouseover", color);  
+        viewPort.removeEventListener("mouseover", grey);
     });
 
     //function to set mouseover to "erase" / set to class default

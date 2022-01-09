@@ -98,6 +98,7 @@
 
     initialColor ();
     
+    
     //function to set the mouseover as greyscale
     const greyScale = document.querySelector('#greyScale');
     greyScale.addEventListener('click', function (e) {
@@ -108,40 +109,24 @@
         });
     });
 
-    //function to set mouseover as random colors
-    const rainbow = document.querySelector('#rainbow');
-    rainbow.addEventListener('click', function (e) {      
-        let viewPort = document.getElementById("viewPort");
-        viewPort.removeEventListener("mouseover", darker);
-        viewPort.addEventListener("mouseover", function(e) {
-            function random(number) {
-            return Math.floor(Math.random() * (number+1));
-            };
-            const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
-            e.target.style.backgroundColor = rndCol;
-            //added in most recently. Resolves going from darken to rainbow.
-            //need to break rainbow into function call like darken
-            //need to allow darken to cancel rainbows listener
-            event.target.style.opacity = "";
-        });
-    });
 
-    /*
-    //Original, do not erase
-    const darken = document.querySelector('#darken');
-    darken.addEventListener('click', function (e) {
+
+    const rainbow = document.querySelector('#rainbow');
+    rainbow.addEventListener('click', coloring);
+    
+    function coloring () {
         let viewPort = document.getElementById("viewPort");
-        viewPort.addEventListener("mouseover", function (e) {
-            e.target.style.backgroundColor = "blue";
-            if (e.target.style.opacity < 0.2) {
-                e.target.style.opacity = "0.2";
-            } else if (e.target.style.opacity >= 0.2){
-                let current = Number(e.target.style.opacity) + 0.2;
-                e.target.style.opacity = current;
-            };
-        });
-    });
-    */
+        viewPort.addEventListener("mouseover", color);
+    };
+    
+    function color (event){
+        function random(number) {
+        return Math.floor(Math.random() * (number+1));
+        };
+        const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+        event.target.style.backgroundColor = rndCol;
+        event.target.style.opacity = "";
+    };
 
     const darken = document.querySelector('#darken');
     darken.addEventListener('click', darkening);
@@ -167,6 +152,10 @@
 
     greyScale.addEventListener('click', ()=> {
         viewPort.removeEventListener("mouseover", darker);   
+    });
+
+    darken.addEventListener('click', ()=> {
+        viewPort.removeEventListener("mouseover", color);  
     });
 
     //function to set mouseover to "erase" / set to class default

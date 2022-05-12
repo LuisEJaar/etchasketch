@@ -3,6 +3,8 @@ Simple project to create the functionality of an Etch-A-Sketch game.
 
 **Link to project:** https://luisejaar.github.io/etchasketch/
 
+![Etch-A-Sketch](functionality.gif)
+
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript

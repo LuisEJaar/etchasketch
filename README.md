@@ -3,7 +3,7 @@ Simple project to create the functionality of an Etch-A-Sketch game.
 
 **Link to project:** https://luisejaar.github.io/etchasketch/
 
-![Etch-A-Sketch](functionality.gif)
+<img src="/assets/functionality.gif" alt="Etch-A-Sketch" width="500"/>
 
 ## How It's Made:
 

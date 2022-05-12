@@ -15,8 +15,6 @@ I used event listeners to tell when the user is hovering over a tile and remove 
 
 - Update the CSS / presentation
 - Using objects
-- The grid size change needs to alert the user that it can't be larger than 100 vs console log
-- Needs to implement separation of concerns
 
 ## Lessons Learned:
 

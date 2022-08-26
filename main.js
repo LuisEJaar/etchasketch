@@ -2,24 +2,27 @@
 const clearGrid = document.querySelector('#clearGrid');
 clearGrid.addEventListener('click', ()=> {
     var pixels = document.getElementById('viewPort').getElementsByTagName('div'); 
-    for (i = 0; i < pixels.length; i++) {
-        var pixel = pixels[i];
-        pixel.style.backgroundColor = "";
-        //pixel.style.opacity = 0;
-    }
+    gridMaker(Math.sqrt(pixels.length));
 });
 
 //function to create the grid
-function gridMaker16x16() {
-    for(i=0; i<256;i++){
-        const gridContainer = document.querySelector('#viewPort');
+function gridMaker(number) {
+    if(document.querySelector('#viewPort')){
+        document.querySelector('#viewPort').remove(); 
+    }
+    const gameConsole = document.querySelector('.gameConsole');
+    const gridContainer = document.createElement('div');
+    gridContainer.setAttribute('id','viewPort');
+    for(i=0; i<number**2;i++){
         const pixel = document.createElement('div');
         pixel.classList.add('pixel');
         gridContainer.appendChild(pixel);
     };
+    gameConsole.appendChild(gridContainer);
+    gridContainer.style.gridTemplateColumns = `repeat(${number},1fr)`;
 };
 
-gridMaker16x16();
+gridMaker(16);
 
 //function to take user input and create a grid
 const enterButton = document.querySelector('#enter');
@@ -27,47 +30,25 @@ const enterButton = document.querySelector('#enter');
 enterButton.addEventListener('click',()=> {
     userinput = document.getElementById("gridSize");
     input = Number(userinput.value);
-    userinput.value = ""
+    userinput.value = "";
     
     if (input > 100) {
         console.log('thats too much work');
    } else {
-        //remove old grid
-        const gridContainer = document.querySelector('#viewPort'); 
-        const pixels = document.getElementById('viewPort').getElementsByTagName('div');
-        const iterations = pixels.length
-        for (i = 0; i < iterations; i++) {
-            const pixel = pixels[0];
-            pixel.style.backgroundColor = "";
-            gridContainer.removeChild(pixel);
-            console.log(pixels.length);
-        };
         //create new divs for grid
-        for(i=0; i<(input**2);i++){
-            const gridContainer = document.querySelector('#viewPort');
-            const pixel = document.createElement('div');
-            pixel.classList.add('pixel');
-            gridContainer.appendChild(pixel);
-        };
-        document.getElementById("viewPort").style.gridTemplateColumns = `repeat(${input},1fr)`;
+        gridMaker(input);
     };
-    });
+});
 
 //function to set initial color as greyscale
-function initialColor () {
-    let viewPort = document.getElementById("viewPort");
-    viewPort.addEventListener("mouseover", function(e) {
-    e.target.style.backgroundColor = "grey";
-    });
-};
-
-initialColor ();
+greying ()
 
 //setup for grey scale button function
 const greyScale = document.querySelector('#greyScale');
 greyScale.addEventListener('click', greying);
 
 function greying () {
+    defenAllListeners();
     let viewPort = document.getElementById("viewPort");
     viewPort.addEventListener("mouseover", grey);   
 };
@@ -82,13 +63,14 @@ const rainbowButton = document.querySelector('#rainbow');
 rainbowButton.addEventListener('click', coloring);
 
 function coloring () {
+    defenAllListeners();
     let viewPort = document.getElementById("viewPort");
     viewPort.addEventListener("mouseover", rainbow);
 };
 
 function rainbow (event) {
     function random(number) {
-    return Math.floor(Math.random() * (number+1));
+        return Math.floor(Math.random() * (number+1));
     };
     const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
     event.target.style.backgroundColor = rndCol;
@@ -100,9 +82,10 @@ const darken = document.querySelector('#darken');
 darken.addEventListener('click', darkening);
 
 function darkening () {
+    defenAllListeners();
     let viewPort = document.getElementById("viewPort");
     viewPort.addEventListener("mouseover", dark);    
-    };
+};
 
 function dark (event) {    
         event.target.style.backgroundColor = "blue";
@@ -114,28 +97,26 @@ function dark (event) {
     };
 };
 
-//remove interfering event listeners
-rainbowButton.addEventListener('click', ()=> {
-    viewPort.removeEventListener("mouseover", dark);
-    viewPort.removeEventListener("mouseover", grey);   
-});
-
-greyScale.addEventListener('click', ()=> {
-    viewPort.removeEventListener("mouseover", dark);
-    viewPort.removeEventListener("mouseover", rainbow);  
-       
-});
-
-darken.addEventListener('click', ()=> {
-    viewPort.removeEventListener("mouseover", rainbow);  
-    viewPort.removeEventListener("mouseover", grey);
-});
-
 //function to set mouseover to "erase" / set to class default
 const eraser = document.querySelector('#eraser');
-eraser.addEventListener('click', function (e) {       
+eraser.addEventListener('click', erasing);
+
+function erasing () {
+    defenAllListeners();
     let viewPort = document.getElementById("viewPort");
-    viewPort.addEventListener("mouseover", function(e) {
-        e.target.style.backgroundColor = "";
-    });
-});
+    viewPort.addEventListener("mouseover", erase);
+}
+
+function erase(event) {
+    event.target.style.backgroundColor = "";
+    event.target.style.opacity = "";
+}
+
+//remove interfering event listeners
+function defenAllListeners() {
+    viewPort.removeEventListener("mouseover", dark);
+    viewPort.removeEventListener("mouseover", grey); 
+    viewPort.removeEventListener("mouseover", erase); 
+    viewPort.removeEventListener("mouseover", rainbow);  
+}
+
